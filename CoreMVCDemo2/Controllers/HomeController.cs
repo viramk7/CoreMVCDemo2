@@ -15,35 +15,27 @@ namespace CoreMVCDemo2.Controllers
     {
         #region Initialization
 
-        IEntityService<Student> _studentService;
-        IEntityService<Subject> _subjectService;
-        IEntityService<StudentModel> _studentModelService;
+        //IEntityService<Student> _studentService;
+        //IEntityService<Subject> _subjectService;
+        //IEntityService<StudentModel> _studentModelService;
 
-        public HomeController(IEntityService<Student> studentService,
-                              IEntityService<Subject> subjectService,
-                              IEntityService<StudentModel> studentModelService)
+        public HomeController()
         {
-            _studentService = studentService;
-            _subjectService = subjectService;
-            _studentModelService = studentModelService;
+            
         }
 
         #endregion
 
         public IActionResult Index()
         {
-            object[] paramList =
+            var student = new Student
             {
-                new SqlParameter("Id",(object)null ??DBNull.Value)
+                Id = 1,
+                Name = "Viram",
+                Contact = "9737873135",
+                CityId = 2
             };
-
-            var students = _studentModelService.ExecuteSql("GetStudents", paramList).ToList();
-
-            //TruncateData();
-            //PopulateStudentTable();
-            //PopulateSubjectTable();
-
-            return View();
+            return View(student);
         }
 
         public IActionResult GetP1()
@@ -59,39 +51,39 @@ namespace CoreMVCDemo2.Controllers
 
         #region Helper methods
 
-        private void TruncateData()
-        {
-            var students = _studentService.GetAll();
-            _studentService.Delete(students.ToList());
+        //private void TruncateData()
+        //{
+        //    var students = _studentService.GetAll();
+        //    _studentService.Delete(students.ToList());
 
-            var subjects = _subjectService.GetAll();
-            _subjectService.Delete(subjects.ToList());
-        }
+        //    var subjects = _subjectService.GetAll();
+        //    _subjectService.Delete(subjects.ToList());
+        //}
 
-        private void PopulateSubjectTable()
-        {
-            var subjects = new List<Subject>
-            {
-                new Subject{SubjectName= "Maths",Weightage = 5},
-                new Subject{SubjectName= "Science",Weightage = 4},
-                new Subject{SubjectName= "History",Weightage = 3},
-            };
+        //private void PopulateSubjectTable()
+        //{
+        //    var subjects = new List<Subject>
+        //    {
+        //        new Subject{SubjectName= "Maths",Weightage = 5},
+        //        new Subject{SubjectName= "Science",Weightage = 4},
+        //        new Subject{SubjectName= "History",Weightage = 3},
+        //    };
 
-            _subjectService.Insert(subjects);
-        }
+        //    _subjectService.Insert(subjects);
+        //}
 
-        private void PopulateStudentTable()
-        {
-            var students = new List<Student>
-            {
-                new Student{Name="Viram Keshwala",Contact = "9737873135"},
-                new Student{Name="Shruti Sahay",Contact = "7990123456"},
-                new Student{Name="Vivek Sadhu",Contact = "7990123457"},
-                new Student{Name="Sristi ",Contact = "7990123458"},
-            };
+        //private void PopulateStudentTable()
+        //{
+        //    var students = new List<Student>
+        //    {
+        //        new Student{Name="Viram Keshwala",Contact = "9737873135"},
+        //        new Student{Name="Shruti Sahay",Contact = "7990123456"},
+        //        new Student{Name="Vivek Sadhu",Contact = "7990123457"},
+        //        new Student{Name="Sristi ",Contact = "7990123458"},
+        //    };
 
-            _studentService.Insert(students);
-        }
+        //    _studentService.Insert(students);
+        //}
 
         #endregion
 

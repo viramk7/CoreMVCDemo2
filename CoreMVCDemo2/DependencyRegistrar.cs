@@ -1,6 +1,7 @@
 ﻿using CoreMVCDemo2.Repositories;
 using CoreMVCDemo2.Repositories.StudentRepository;
 using CoreMVCDemo2.Services;
+using CoreMVCDemo2.Services.City;
 using CoreMVCDemo2.Services.Student;
 using Microsoft.Extensions.DependencyInjection;
 
@@ -20,6 +21,7 @@ namespace CoreMVCDemo2
             // services
             service.AddScoped(typeof(IEntityService<>), typeof(EntityService<>));
             service.AddScoped<IStudentService, StudentService>();
+            service.AddScoped<ICityService, CityService>();
         }
     }
 }

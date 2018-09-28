@@ -6,6 +6,7 @@ namespace CoreMVCDemo2.Models
     {
         public string Name { get; set; }
         public string Contact { get; set; }
+        public int CityId { get; set; }
     }
 
     public class Subject : Entity<int>
