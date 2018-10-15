@@ -1,0 +1,6 @@
+FROM microsoft/dotnet:2.1-aspnetcore-runtime
+
+WORKDIR /publish
+COPY bin/Debug/netcoreapp2.0/publish .
+
+ENTRYPOINT ["dotnet", "CoreMVCDemo2.dll"]

@@ -1,0 +1,9 @@
+version: '3.1'
+
+services:
+  coredemo2:
+    build:
+      context: .
+    image: coredemo:latest
+    ports:
+      - "8080:80"
