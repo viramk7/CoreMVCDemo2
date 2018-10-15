@@ -15,27 +15,21 @@ namespace CoreMVCDemo2.Controllers
     {
         #region Initialization
 
-        //IEntityService<Student> _studentService;
+        IEntityService<Student> _studentService;
         //IEntityService<Subject> _subjectService;
         //IEntityService<StudentModel> _studentModelService;
 
-        public HomeController()
+        public HomeController(IEntityService<Student> studentService)
         {
-            
+            _studentService = studentService;
         }
 
         #endregion
 
         public IActionResult Index()
         {
-            var student = new Student
-            {
-                Id = 1,
-                Name = "Viram",
-                Contact = "9737873135",
-                CityId = 2
-            };
-            return View(student);
+            var students = _studentService.GetAll();
+            return View(students);
         }
 
         public IActionResult GetP1()

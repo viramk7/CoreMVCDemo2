@@ -2,29 +2,28 @@
 using CoreMVCDemo2.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
-using Microsoft.EntityFrameworkCore.Metadata;
 using Microsoft.EntityFrameworkCore.Migrations;
-using Microsoft.EntityFrameworkCore.Storage;
-using Microsoft.EntityFrameworkCore.Storage.Internal;
-using System;
+using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace CoreMVCDemo2.Migrations
 {
     [DbContext(typeof(StudentDbContext))]
-    [Migration("20180813070719_migration4")]
-    partial class migration4
+    [Migration("20181015095834_IM1")]
+    partial class IM1
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
-                .HasAnnotation("ProductVersion", "2.0.3-rtm-10026")
-                .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+                .HasAnnotation("ProductVersion", "2.1.0-rtm-30799")
+                .HasAnnotation("Relational:MaxIdentifierLength", 64);
 
             modelBuilder.Entity("CoreMVCDemo2.Models.Student", b =>
                 {
                     b.Property<long>("Id")
                         .ValueGeneratedOnAdd();
+
+                    b.Property<int>("CityId");
 
                     b.Property<string>("Contact");
 
@@ -37,16 +36,11 @@ namespace CoreMVCDemo2.Migrations
 
             modelBuilder.Entity("CoreMVCDemo2.Models.StudentSubjectMapping", b =>
                 {
-                    b.Property<long>("Id")
-                        .ValueGeneratedOnAdd();
-
                     b.Property<long>("StudentId");
 
                     b.Property<int>("SubjectId");
 
-                    b.HasKey("Id");
-
-                    b.HasIndex("StudentId");
+                    b.HasKey("StudentId", "SubjectId");
 
                     b.HasIndex("SubjectId");
 
