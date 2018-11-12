@@ -20,6 +20,8 @@ namespace CoreMVCDemo2.Controllers
 
         #endregion
 
+
+        // Issue1 resolved
         public IActionResult Index()
         {
             var students = _studentService.GetAll();
