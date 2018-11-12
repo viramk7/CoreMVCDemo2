@@ -1,13 +1,6 @@
-﻿using System.Diagnostics;
+﻿using CoreMVCDemo2.Models;
 using Microsoft.AspNetCore.Mvc;
-using CoreMVCDemo2.Models;
-using CoreMVCDemo2.Services.Student;
-using System;
-using System.Collections.Generic;
-using CoreMVCDemo2.Services;
-using System.Linq;
 using System.Threading;
-using System.Data.SqlClient;
 
 namespace CoreMVCDemo2.Controllers
 {
