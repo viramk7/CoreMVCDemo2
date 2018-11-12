@@ -1,27 +1,29 @@
 ﻿@using CoreMVCDemo2.Models
-@using CoreMVCDemo2.Services.City
-@inject ICityService CityService
-@model Student
+@model IEnumerable<Student>
+
+<h1>Hello there</h1>
+
 <div class="container">
     <div class="row">
         <div class="col-md-12">
-            <table>
+            <table border="1">
                 <tr>
                     <td>Id</td>
-                    <td>@Model.Id</td>
-                </tr>
-                <tr>
                     <td>Name</td>
-                    <td>@Model.Name</td>
+                    <td>Contact</td>
+                    <td>City Id</td>
                 </tr>
+
+                @foreach (var std in Model)
+                {
                 <tr>
-                    <td>Id</td>
-                    <td>@Model.Contact</td>
+                    <td>@std.Id</td>
+                    <td>@std.Name</td>
+                    <td>@std.Contact</td>
+                    <td>@std.CityId</td>
                 </tr>
-                <tr>
-                    <td>City</td>
-                    <td>@Html.DropDownListFor(m=>m.CityId, CityService.GetCities().Select(s => new SelectListItem { Text = s.CityName,Value = s.CityId.ToString() }))</td>
-                </tr>
+                }
+
             </table>
         </div>
     </div>

@@ -1,0 +1,15 @@
+#BUILD STAGE
+FROM microsoft/dotnet:2.1-sdk AS build-env
+WORKDIR /publish
+
+COPY *.csproj .
+RUN dotnet restore
+
+COPY . .
+RUN dotnet publish -o /publish
+
+# RUNTIME ENV
+FROM microsoft/dotnet:2.1-aspnetcore-runtime
+WORKDIR /publish
+COPY --from=build-env /publish .
+ENTRYPOINT ["dotnet", "CoreMVCDemo2.dll"]
