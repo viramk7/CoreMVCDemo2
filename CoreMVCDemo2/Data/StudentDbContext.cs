@@ -11,13 +11,13 @@ namespace CoreMVCDemo2.Data
         }
 
         public DbSet<Student> Student { get; set; }
-        public DbSet<Subject> Subject { get; set; }
-        public DbSet<StudentSubjectMapping> StudentSubjectMapping { get; set; }
+        public DbSet<ClassRoom> ClassRoom { get; set; }
+        //public DbSet<StudentSubjectMapping> StudentSubjectMapping { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
 
-            modelBuilder.Entity<StudentSubjectMapping>().HasKey(a => new { a.StudentId, a.SubjectId });
+            //modelBuilder.Entity<StudentSubjectMapping>().HasKey(a => new { a.StudentId, a.SubjectId });
 
             base.OnModelCreating(modelBuilder);
         }

@@ -20,7 +20,8 @@
                 </tr>
                 <tr>
                     <td>City</td>
-                    <td>@Html.DropDownListFor(m=>m.CityId, CityService.GetCities().Select(s => new SelectListItem { Text = s.CityName,Value = s.CityId.ToString() }))</td>
+                    <td>
+                    @*@Html.DropDownListFor(m=>m.CityId, CityService.GetCities().Select(s => new SelectListItem { Text = s.CityName,Value = s.CityId.ToString() }))</td>*@
                 </tr>
             </table>
         </div>

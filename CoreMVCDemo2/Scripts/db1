@@ -1,0 +1,37 @@
+﻿CREATE TABLE `__EFMigrationsHistory` (
+    `MigrationId` varchar(95) NOT NULL,
+    `ProductVersion` varchar(32) NOT NULL,
+    CONSTRAINT `PK___EFMigrationsHistory` PRIMARY KEY (`MigrationId`)
+);
+
+CREATE TABLE `Student` (
+    `Id` bigint NOT NULL AUTO_INCREMENT,
+    `Name` longtext NULL,
+    `Contact` longtext NULL,
+    `Age` int NOT NULL,
+    CONSTRAINT `PK_Student` PRIMARY KEY (`Id`)
+);
+
+CREATE TABLE `Subject` (
+    `Id` int NOT NULL AUTO_INCREMENT,
+    `SubjectName` longtext NULL,
+    `Weightage` double NOT NULL,
+    CONSTRAINT `PK_Subject` PRIMARY KEY (`Id`)
+);
+
+CREATE TABLE `StudentSubjectMapping` (
+    `Id` bigint NOT NULL AUTO_INCREMENT,
+    `StudentId` bigint NULL,
+    `SubjectId` int NULL,
+    CONSTRAINT `PK_StudentSubjectMapping` PRIMARY KEY (`Id`),
+    CONSTRAINT `FK_StudentSubjectMapping_Student_StudentId` FOREIGN KEY (`StudentId`) REFERENCES `Student` (`Id`) ON DELETE NO ACTION,
+    CONSTRAINT `FK_StudentSubjectMapping_Subject_SubjectId` FOREIGN KEY (`SubjectId`) REFERENCES `Subject` (`Id`) ON DELETE NO ACTION
+);
+
+CREATE INDEX `IX_StudentSubjectMapping_StudentId` ON `StudentSubjectMapping` (`StudentId`);
+
+CREATE INDEX `IX_StudentSubjectMapping_SubjectId` ON `StudentSubjectMapping` (`SubjectId`);
+
+INSERT INTO `__EFMigrationsHistory` (`MigrationId`, `ProductVersion`)
+VALUES ('20181005062711_IM', '2.1.0-rtm-30799');
+

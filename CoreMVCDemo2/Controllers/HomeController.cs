@@ -15,26 +15,30 @@ namespace CoreMVCDemo2.Controllers
     {
         #region Initialization
 
-        //IEntityService<Student> _studentService;
-        //IEntityService<Subject> _subjectService;
+        IStudentService _studentService;
+        IEntityService<ClassRoom> _classRoomService;
         //IEntityService<StudentModel> _studentModelService;
 
-        public HomeController()
+        //This is brach1 commit
+        public HomeController(IStudentService studentService, IEntityService<ClassRoom> classRoomService)
         {
-            
+            _studentService = studentService;
+            _classRoomService = classRoomService;
         }
 
         #endregion
 
         public IActionResult Index()
         {
-            var student = new Student
-            {
-                Id = 1,
-                Name = "Viram",
-                Contact = "9737873135",
-                CityId = 2
-            };
+
+            var result = _studentService.UpdateClassNameRemoveAllStudent(2);
+
+            IEnumerable<Student> clssRooms; 
+            if (!result)
+                clssRooms = _studentService.GetAll().ToList();
+
+            var student = new Student();
+
             return View(student);
         }
 

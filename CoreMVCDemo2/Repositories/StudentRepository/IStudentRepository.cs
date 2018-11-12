@@ -6,5 +6,7 @@ namespace CoreMVCDemo2.Repositories.StudentRepository
     public interface IStudentRepository : IGenericRepository<Student>
     {
         Student GetById(long id);
+
+        bool UpdateClassNameRemoveAllStudent(int id);
     }
 }

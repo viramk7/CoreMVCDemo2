@@ -23,7 +23,7 @@ namespace CoreMVCDemo2
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddDbContext<StudentDbContext>(o => o.UseSqlServer(Configuration.GetConnectionString("StudentCS")));
+            services.AddDbContext<StudentDbContext>(o => o.UseMySql(Configuration.GetConnectionString("StudentCS")));
             DependencyRegistrar.Register(services);
             services.AddMvc();
         }

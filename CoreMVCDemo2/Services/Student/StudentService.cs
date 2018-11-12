@@ -20,5 +20,10 @@ namespace CoreMVCDemo2.Services.Student
         {
             return _repository.GetById(id);
         }
+
+        public bool UpdateClassNameRemoveAllStudent(int id)
+        {
+            return _repository.UpdateClassNameRemoveAllStudent(id);
+        }
     }
 }
